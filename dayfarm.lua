@@ -35,7 +35,7 @@ RunService.Heartbeat:Connect(function()
                 blockplayer()
                 rconsoleprint(player.Name .. " made you log! Server hopping... ")
                 myPlayer:Kick("Player Nearby")
-                syn.queue_on_teleport("<script to execute after TP>")
+                syn.queue_on_teleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/JayExploit/rogue-lineage/main/dayfarm.lua?token=GHSAT0AAAAAAB74XWQW6GXZSZOPOFTBUCPMZAVN4TQ", true))()')
                 game.TeleportService:Teleport(3016661674)
                 break
             end
@@ -48,9 +48,24 @@ RunService.Heartbeat:Connect(function()
             blockplayer()
             rconsoleprint(player.Name .. " Is a moderator! Server hopping... ")
             myPlayer:Kick("Player Nearby")
-            syn.queue_on_teleport("<script to execute after TP>")
+            syn.queue_on_teleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/JayExploit/rogue-lineage/main/dayfarm.lua?token=GHSAT0AAAAAAB74XWQW6GXZSZOPOFTBUCPMZAVN4TQ", true))()')
             game.TeleportService:Teleport(3016661674)
         end
     end
+    
+    for _, player in pairs(game.Players:GetPlayers()) do
+        if player ~= game.Players.LocalPlayer then
+            local character = player.Character
+            if character and character:FindFirstChild("Backpack") and character.Backpack:FindFirstChild("perflora") then
+                hopping = true
+                blockplayer()
+                rconsoleprint(player.Name .. " Is a moderator! Server hopping... ")
+                myPlayer:Kick("Player Nearby")
+                syn.queue_on_teleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/JayExploit/rogue-lineage/main/dayfarm.lua?token=GHSAT0AAAAAAB74XWQW6GXZSZOPOFTBUCPMZAVN4TQ", true))()')
+                game.TeleportService:Teleport(3016661674)
+        end
+    end
+end
+
     
 end)
