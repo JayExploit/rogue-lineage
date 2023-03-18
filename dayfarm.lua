@@ -33,9 +33,8 @@ RunService.Heartbeat:Connect(function()
             if distance <= detectionDistance and not hopping then
                 hopping = true
                 blockplayer()
-                rconsoleprint(player.Name .. " made you log! Server hopping... ")
+                rconsoleprint(player.Name .. " got too close! Server hopping... ")
                 myPlayer:Kick("Player Nearby")
-                syn.queue_on_teleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/JayExploit/rogue-lineage/main/dayfarm.lua", true))()')
                 game.TeleportService:Teleport(3016661674)
                 break
             end
@@ -48,7 +47,6 @@ RunService.Heartbeat:Connect(function()
             blockplayer()
             rconsoleprint(player.Name .. " Is a moderator! Server hopping... ")
             myPlayer:Kick("Player Nearby")
-            syn.queue_on_teleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/JayExploit/rogue-lineage/main/dayfarm.lua", true))()')
             game.TeleportService:Teleport(3016661674)
         end
     end
@@ -56,16 +54,19 @@ RunService.Heartbeat:Connect(function()
     for _, player in pairs(game.Players:GetPlayers()) do
         if player ~= game.Players.LocalPlayer then
             local character = player.Character
-            if character and character:FindFirstChild("Backpack") and character.Backpack:FindFirstChild("perflora") then
+            if character and character:FindFirstChild("Backpack") and character.Backpack:FindFirstChild("Perflora") then
                 hopping = true
                 blockplayer()
-                rconsoleprint(player.Name .. " Is a moderator! Server hopping... ")
+                rconsoleprint(player.Name .. " Is a druid! Server hopping... ")
                 myPlayer:Kick("Player Nearby")
-                syn.queue_on_teleport('loadstring(game:HttpGet("https://raw.githubusercontent.com/JayExploit/rogue-lineage/main/dayfarm.lua", true))()')
                 game.TeleportService:Teleport(3016661674)
+            end
         end
     end
-end
-
     
+    game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
+        if State == Enum.TeleportState.Started then
+            syn.queue_on_teleport("pcall(function() loadstring(game:HttpGet('https://raw.githubusercontent.com/JayExploit/rogue-lineage/main/dayfarm.lua'))() end)")
+        end
+    end)
 end)
